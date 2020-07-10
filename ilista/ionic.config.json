@@ -1,0 +1,7 @@
+{
+    "name": "ilista",
+    "integrations": {
+      "capacitor": {}
+    },
+    "type": "react"
+  }
