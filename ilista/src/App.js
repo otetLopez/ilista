@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
 
-// const Todo = ({ todo }) => <div className="todo">{todo.text}</div>;
 function Todo({ todo, index, completeTodo }) {
   return (
     <div
@@ -32,6 +31,7 @@ function TodoForm({ addTodo }) {
       <input
         type="text"
         className="input"
+        placeholder="New note"
         value={value}
         onChange={e => setValue(e.target.value)}
       />
@@ -41,18 +41,6 @@ function TodoForm({ addTodo }) {
 
 function App() {
   const [todos, setTodos] = useState([
-    {
-      text: "Learn about React",
-      isCompleted: false
-    },
-    {
-      text: "Meet friend for lunch",
-      isCompleted: false
-    },
-    {
-      text: "Build really cool todo app",
-      isCompleted: false
-    }
   ]);
 
   const completeTodo = index => {
