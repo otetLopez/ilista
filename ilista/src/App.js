@@ -57,10 +57,6 @@ function TodoForm({ addTodo }) {
 
 function NoteDetail() {
     console.log("NoteDetail")
-    var title = document.getElementById('title_in').value;
-    var content = document.getElementById('content_in').value;
-    console.log(title);
-    console.log(content);
     const where = document.getElementById("root");
     ReactDOM.render(<AddNotePage/>, where);
 }
@@ -86,21 +82,15 @@ function App() {
     setTodos(newTodos);
   };
 
-  return (
+  return ( 
     <div className="app">
+      <h1>ILISTA</h1>
+      <i>A companion.  A simple note application</i>
+      <br/>      <br/>      <br/>      <br/>      <br/>
       <div className="todo-list">
-        {todos.map((todo, index) => (
-          <Todo
-            key={index}
-            index={index}
-            todo={todo}
-            content={todo}
-            completeTodo={completeTodo}
-            removeTodo={removeTodo}
-          />
-        ))}
-        <TodoForm addTodo={addTodo} />
+        <p>Note list to be displayed here...</p>
       </div>
+      <br/>      <br/>      <br/>      <br/>      <br/>
       <div>
         <button onClick={NoteDetail}> Add New Note</button>
       </div>
