@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./App.css";
-import "./Note.js";
-import AddNotePage from './PageAddNote.js';
+import "./scripts/note.js";
+import AddNotePage from './scripts/addNote.js';
 
 
 

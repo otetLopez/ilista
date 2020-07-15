@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import App from './App.js';
-import "./App.css";
+import App from '../App.js';
+import "../App.css";
 
 
 function TodoForm({ addTodo }) {
