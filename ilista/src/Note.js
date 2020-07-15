@@ -5,10 +5,10 @@
  * @param {string} content 
  */
 
- export function Note(id, title, content) {
-    var id = id;
-    var title = title;
-    var content = content;
+ export function Note(idx, nt, nc) {
+    var id = idx;
+    var title = nt;
+    var content = nc;
 
     Object.defineProperties(this, {
         "id": {
