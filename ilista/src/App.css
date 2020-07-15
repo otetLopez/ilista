@@ -38,13 +38,22 @@
 }
 
 .app {
-  background: #209cee;
+
+  background-image: url("./assets/bg.jpg");
   padding: 30px;
   height: 100vh;
 }
 
+h1{
+  color: #f0f0f0;
+}
+
+p {
+  color: #f0f0f0;
+}
+
 .todo-list {
-  background: #e8e8e8;
+  background-color: rgba(1, 90, 169,.2);
   border-radius: 4px;
   padding: 5px;
   max-width: 400px;

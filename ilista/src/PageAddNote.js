@@ -88,7 +88,7 @@ function AddNotePage() {
     return (
         <div className="app">
             <h1>ILISTA</h1>
-            <i>A companion.  A simple note application</i>
+            <p><i>A companion.  A simple note application</i></p>
             <br/><br/><br/><br/><br/>
             <div className="todo-list">
             {todos.map((todo, index) => (
