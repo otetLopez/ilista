@@ -36,18 +36,20 @@ function TodoForm({ addTodo }) {
         <form onSubmit={handleSubmit}>
         <input
             type="text"
-            className="input"
+            className="title_in"
             placeholder="New Note"
             id="title_in"
             value={title_in}
             onChange={e => setTitle(e.target.value)}
         />
-        <input
-            type="text"
-            className="input"
-            placeholder="New Note Content"
+        <br/><br/>
+        <textarea 
+            name="content_in" 
             id="content_in"
+            placeholder="Enter you note details here..."
             value={content_in}
+            rows="15"
+            cols="50"
             onChange={e => setContent(e.target.value)}
         />
         </form>
@@ -89,7 +91,7 @@ function AddNotePage() {
         <div className="app">
             <h1>ILISTA</h1>
             <p><i>A companion.  A simple note application</i></p>
-            <br/><br/><br/><br/><br/>
+            <br/><br/>
             <div className="todo-list">
             {todos.map((todo, index) => (
                 <Todo
