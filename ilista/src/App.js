@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+// import { createStackNavigator } from '@react-navigation/stack';
 import "./App.css";
+import "./Note.js";
 
 function Todo({ todo, index, completeTodo, removeTodo }) {
   return (
@@ -18,13 +20,14 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
 }
 
 function TodoForm({ addTodo }) {
-  const [value, setValue] = React.useState("");
+  const [title_in, setTitle] = React.useState("");
+  const [content_in, setContent] = React.useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (!value) return;
-    addTodo(value);
-    setValue("");
+    if (!title_in) return;
+    addTodo(title_in);
+    setTitle("");
   };
 
   return (
@@ -32,12 +35,34 @@ function TodoForm({ addTodo }) {
       <input
         type="text"
         className="input"
-        placeholder="New note"
-        value={value}
-        onChange={e => setValue(e.target.value)}
+        placeholder="New Note"
+        value={title_in}
+        onChange={e => setTitle(e.target.value)}
+      />
+ 
+      <input
+        type="text"
+        className="input"
+        placeholder="Enter new note details..."
+        value={content_in}
+        onChange={d => setContent(d.target.value)}
       />
     </form>
   );
+}
+
+function NoteDetail() {
+    console.log("NoteDetail")
+    return (
+      <div className="shopping-list">
+        <h1>Shopping List for</h1>
+        <ul>
+          <li>Instagram</li>
+          <li>WhatsApp</li>
+          <li>Oculus</li>
+        </ul>
+      </div>
+    );
 }
 
 function App() {
@@ -74,6 +99,9 @@ function App() {
           />
         ))}
         <TodoForm addTodo={addTodo} />
+      </div>
+      <div>
+        <button onClick={NoteDetail}> Add New Note</button>
       </div>
     </div>
   );
