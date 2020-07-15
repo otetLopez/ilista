@@ -39,14 +39,6 @@ function TodoForm({ addTodo }) {
         value={title_in}
         onChange={e => setTitle(e.target.value)}
       />
- 
-      <input
-        type="text"
-        className="input"
-        placeholder="Enter new note details..."
-        value={content_in}
-        onChange={d => setContent(d.target.value)}
-      />
     </form>
   );
 }
@@ -54,13 +46,7 @@ function TodoForm({ addTodo }) {
 function NoteDetail() {
     console.log("NoteDetail")
     return (
-      <div className="shopping-list">
-        <h1>Shopping List for</h1>
-        <ul>
-          <li>Instagram</li>
-          <li>WhatsApp</li>
-          <li>Oculus</li>
-        </ul>
+      <div className="note-list">
       </div>
     );
 }
