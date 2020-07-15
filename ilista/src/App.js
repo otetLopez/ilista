@@ -4,6 +4,8 @@ import "./App.css";
 import "./Note.js";
 import AddNotePage from './PageAddNote.js';
 
+
+
 function Todo({ todo, index, completeTodo, removeTodo }) {
   return (
     <div
@@ -11,7 +13,6 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
       style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
     >
       {todo.text}
-
       <div>
         <button onClick={() => completeTodo(index)}>Complete</button>
         <button onClick={() => removeTodo(index)}>x</button>
@@ -26,7 +27,11 @@ function NoteDetail() {
     ReactDOM.render(<AddNotePage/>, where);
 }
 
-function App() {
+function App(newNote) {
+
+  if(newNote) {
+    console.log(newNote.note);
+  }
   const [todos, setTodos] = useState([
   ]);
 
