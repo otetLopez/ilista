@@ -42,6 +42,9 @@ function DeleteNote(id) {
       isRefreshNeeded = true;
     }
   }
+  if(isRefreshNeeded == true) {
+    // forceUpdate();
+  }
 }
 
 /**
@@ -64,7 +67,7 @@ function CreateNewNote() {
  * @param {*} completeTodo 
  * @param {*} removeTodo 
  */
-function DisplayList(props) {
+function DisplayList(props, removeTodo) {
   const content = props.posts.map((post) =>
     <div key={post.id}>
       <div className="todo">
