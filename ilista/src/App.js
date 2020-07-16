@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import "./App.css";
 import "./scripts/note.js";
@@ -42,7 +42,7 @@ function DeleteNote(id) {
       isRefreshNeeded = true;
     }
   }
-  if(isRefreshNeeded == true) {
+  if(isRefreshNeeded === true) {
     // forceUpdate();
   }
 }
