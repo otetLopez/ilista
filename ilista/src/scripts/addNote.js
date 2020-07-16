@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from '../App.js';
 import "../App.css";
 import { Note } from "./note.js";
-import { TestNote } from "../App.js";
+import { PushNote } from "../App.js";
 
 function TodoForm({ addTodo }) {
     const [title_in, setTitle] = React.useState("");
@@ -13,10 +13,8 @@ function TodoForm({ addTodo }) {
     const handleSubmit = e => {
         console.log("Enter button is pressed.  But not handling it");
         e.preventDefault();
-        // if (!title_in) return;
-        // addTodo(title_in, content_in);
-        // setTitle("");
     };
+    
     return (
         <form onSubmit={handleSubmit}>
         <input
@@ -41,31 +39,16 @@ function TodoForm({ addTodo }) {
     );
 }
 
-function SubmitNote({ addTodo }) {
-    console.log("Completing Note")
-    var title = document.getElementById('title_in').value;
-    var content = document.getElementById('content_in').value;
-    console.log(title);
-    console.log(content);
-}
-
+//CURRENTLY ASSIGNING INDEX TO DEFAULT 1 when creating var newNote = new Note(...)
 function AddNotePage() {
-    const [todos, setTodos] = useState([
-    ]);
-    
-    const addTodo = text => {
-        console.log("I am in addTodo")
-    const newTodos = [...todos, { text }];
-    setTodos(newTodos);
-    };
-
+    const where = document.getElementById("root");
     return (
         <div className="app">
             <h1>ILISTA</h1>
             <p><i>A companion.  A simple note application</i></p>
             <br/><br/>
             <div className="todo-list">
-            <TodoForm addTodo={addTodo} />
+            <TodoForm/>
             </div>
             <br/><br/><br/><br/><br/>
             <div>
@@ -73,16 +56,14 @@ function AddNotePage() {
                         console.log("Pressed Done")
                         var title = document.getElementById('title_in').value
                         var content = document.getElementById('content_in').value;
-                        addTodo(title)
                         var newNote = new Note(1, title, content);
-                        console.log("This is the title:" + newNote.title)
-
-                        TestNote(newNote);
-
-                        const where = document.getElementById("root");
+                        console.log("This is the title:" + newNote.title);
+                        PushNote(newNote);
                         ReactDOM.render(<App/>, where);
             }}> Done</button>
-            <button onClick={SubmitNote}> Cancel</button>
+            <button onClick={() => {
+                        ReactDOM.render(<App/>, where);
+                        }}> Cancel</button>
             </div>
       </div>
     );
