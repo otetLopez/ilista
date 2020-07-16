@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import App from '../App.js';
 import "../App.css";
-
+import { Note } from "./note.js";
+import { TestNote } from "../App.js";
 
 function TodoForm({ addTodo }) {
     const [title_in, setTitle] = React.useState("");
@@ -40,7 +41,7 @@ function TodoForm({ addTodo }) {
     );
 }
 
-function SubmitNote() {
+function SubmitNote({ addTodo }) {
     console.log("Completing Note")
     var title = document.getElementById('title_in').value;
     var content = document.getElementById('content_in').value;
@@ -72,10 +73,14 @@ function AddNotePage() {
                         console.log("Pressed Done")
                         var title = document.getElementById('title_in').value
                         var content = document.getElementById('content_in').value;
-                        console.log(title)
                         addTodo(title)
+                        var newNote = new Note(1, title, content);
+                        console.log("This is the title:" + newNote.title)
+
+                        TestNote(newNote);
+
                         const where = document.getElementById("root");
-                        ReactDOM.render(<App note="NewNote"/>, where);
+                        ReactDOM.render(<App/>, where);
             }}> Done</button>
             <button onClick={SubmitNote}> Cancel</button>
             </div>

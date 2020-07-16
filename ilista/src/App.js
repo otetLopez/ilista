@@ -4,7 +4,7 @@ import "./App.css";
 import "./scripts/note.js";
 import AddNotePage from './scripts/addNote.js';
 
-
+var notesList = [];
 
 function Todo({ todo, index, completeTodo, removeTodo }) {
   return (
@@ -27,11 +27,7 @@ function NoteDetail() {
     ReactDOM.render(<AddNotePage/>, where);
 }
 
-function App(newNote) {
-
-  if(newNote) {
-    console.log(newNote.note);
-  }
+function App() {
   const [todos, setTodos] = useState([
   ]);
 
@@ -44,6 +40,12 @@ function App(newNote) {
   const removeTodo = index => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
+
+  const addTodo = text => {
+    console.log("I am in addTodo")
+    const newTodos = [...todos, { text }];
     setTodos(newTodos);
   };
 
@@ -72,5 +74,20 @@ function App(newNote) {
     </div>
   );
 }
+
+export function TestNote(newNote) {
+    console.log("I received title" + newNote.title);
+    console.log("I received content" + newNote.content);
+    notesList.push(newNote);
+
+    if(notesList.length > 0){
+      var i=0;
+      for(i=0; i<notesList.length; i++) {
+        console.log(i + " title:" + notesList[i].title + "\t content:" + notesList[i].content);
+      }
+   
+    }
+}
+
 export default App;
 
