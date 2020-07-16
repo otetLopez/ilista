@@ -3,15 +3,16 @@ import ReactDOM from "react-dom";
 import App from '../App.js';
 import "../App.css";
 import { Note } from "./note.js";
-import { PushNote } from "../App.js";
+import { PushNote, GetNoteID, INFO_LOG } from "../App.js";
 
-function TodoForm({ addTodo }) {
+
+function TodoForm() {
     const [title_in, setTitle] = React.useState("");
     const [content_in, setContent] = React.useState("");
 
     // handle Submit doesn't work when there is one or more input
     const handleSubmit = e => {
-        console.log("Enter button is pressed.  But not handling it");
+        console.log(INFO_LOG + "Enter button is pressed.  But not handling it");
         e.preventDefault();
     };
     
@@ -41,6 +42,8 @@ function TodoForm({ addTodo }) {
 
 //CURRENTLY ASSIGNING INDEX TO DEFAULT 1 when creating var newNote = new Note(...)
 function AddNotePage() {
+    var note_id = GetNoteID();
+    console.log("Note ID is now: " + note_id);
     const where = document.getElementById("root");
     return (
         <div className="app">
@@ -53,11 +56,9 @@ function AddNotePage() {
             <br/><br/><br/><br/><br/>
             <div>
             <button onClick={()=> {
-                        console.log("Pressed Done")
                         var title = document.getElementById('title_in').value
                         var content = document.getElementById('content_in').value;
-                        var newNote = new Note(1, title, content);
-                        console.log("This is the title:" + newNote.title);
+                        var newNote = new Note(note_id, title, content);
                         PushNote(newNote);
                         ReactDOM.render(<App/>, where);
             }}> Done</button>

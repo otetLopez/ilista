@@ -4,29 +4,9 @@ import "./App.css";
 import "./scripts/note.js";
 import AddNotePage from './scripts/addNote.js';
 
-const INFO_LOG = "INFO_DEBUG: ";
+export const INFO_LOG = "INFO_DEBUG: ";
 var notesList = [];
-
-/**
- * ROSETTE: TODO! THIS IS NOT WORKING YET
- * Todo function is responsible to display the list of existing notes in the main page
- * @param {} param0 
- */
-function Todo({ todo, index, completeTodo, removeTodo }) {
-  console.log(INFO_LOG + "Todo is called with " + todo.text)
-  return (
-    <div
-      className="todo"
-      style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
-    >
-      {todo.text}
-      <div>
-        <button onClick={() => completeTodo(index)}>Complete</button>
-        <button onClick={() => removeTodo(index)}>x</button>
-      </div>
-    </div>
-  );
-}
+var nId = 0;
 
 /**
  * PushNote(newNote)
@@ -34,19 +14,57 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
  * @param {Note} newNote 
  */
 export function PushNote(newNote) {
-  console.log("I received title " + newNote.title);
-  console.log("I received content " + newNote.content);
   notesList.push(newNote);
+  nId = nId + 1;
+}
+
+/**
+ * GetNoteId() 
+ * This function is a stupid way to do indexing and generating note ids
+ * This should be fixed!
+ */
+export function GetNoteID() {
+  return nId;
 }
 
 /**
  * Name: CreateNewNote() 
  * This function routes user to add new note view.  Called when "Add New Note" button is called.
+ * The note_index is just incremented when there is a note being pushed
  */
 function CreateNewNote() {
-    console.log("CreateNewNote")
+    console.log(INFO_LOG + "CreateNewNote")
     const where = document.getElementById("root");
     ReactDOM.render(<AddNotePage/>, where);
+}
+
+/**
+ * Name: DisplayList()
+ * HERE COMES THE DRAGON!
+ * This function displays the note list...
+ * 
+ * @param {*} props 
+ * @param {*} completeTodo 
+ * @param {*} removeTodo 
+ */
+function DisplayList(props, {completeTodo, removeTodo}) {
+  const content = props.posts.map((post) =>
+    <div key={post.id}>
+      <div className="todo">
+        <h3>{post.title}</h3>
+        {post.content}
+        <div>
+          <button onClick={() => completeTodo(post.id)}>Complete</button>
+          <button onClick={() => removeTodo()}>x</button> 
+        </div>
+      </div>
+    </div>
+  );
+  return (
+    <div>
+      {content}
+    </div>
+  );
 }
 
 /**
@@ -54,38 +72,27 @@ function CreateNewNote() {
  * This function is the main app, the default function the application renders.
  */
 function App() {
-  const [todos, setTodos] = useState([
-  ]);
 
   // CURRENTLY NOT FUNCTIONING
   // This is for updating the note status to complete or not
   const completeTodo = index => {
-    const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
-    setTodos(newTodos);
+    // const newTodos = [...todos];
+    // newTodos[index].isCompleted = true;
+    // setTodos(newTodos);
   };
 
     // CURRENTLY NOT FUNCTIONING
   // This is for deleting a note 
   const removeTodo = index => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
+    // const newTodos = [...todos];
+    // newTodos.splice(index, 1);
+    // setTodos(newTodos);
+    console.log("Removing todo at index " + index); 
   };
 
-  // CURRENTLY NOT FUNCTIONING
-  // This is supposed to update the list being pushed to noteList
-  // Reference :
-  //      See global variable : var noteList = [];
-  //      See function PushNote(newNote) function where new notes are added in noteList.  only AddNote.js calls this
-  const addTodo = newNote => {
-    console.log("I am in addTodo")
-    const newTodos = [...todos, { newNote }];
-    setTodos(newTodos);
-  };
-
-  // CURRENTLY ONLY RENDERS VIEWS.  MISSING NOTELIST, DIV CLASSNAME TODO-LIST DOES NOT WORK YET.
+  // CURRENTLY:
   // Button "Add New Note" calls CreateNewNote function that renders AddNote.js 
+  // Note List cannot be deleted, completed or modified
   return ( 
     <div className="app">
       <h1>ILISTA</h1>
@@ -93,16 +100,11 @@ function App() {
       <br/><br/><br/><br/><br/>
       <div className="todo-list">
         <p>Note list to be displayed here...</p>
-        
-        {todos.map((todo, index) => (
-            <Todo
-            key={index}
-            index={index}
-            todo={todo}
-            completeTodo={completeTodo}
-            removeTodo={removeTodo}
-            />
-        ))}
+        <DisplayList 
+          posts={notesList}
+          completeTodo={completeTodo}
+          removeTodo={removeTodo}
+        />
       </div>
       <br/><br/><br/><br/><br/>
       <div>
