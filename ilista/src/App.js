@@ -46,7 +46,7 @@ function CreateNewNote() {
 const editTodo = id => {
   console.log("edit todo at index " + id); 
   const where = document.getElementById("root");
-  ReactDOM.render(<EditNotePage/>, where);
+  ReactDOM.render(<EditNotePage noteId={id}/>, where);
 };
 
 /**

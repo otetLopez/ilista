@@ -3,12 +3,15 @@ import ReactDOM from "react-dom";
 import App from '../App.js';
 import "../App.css";
 import { Note } from "./note.js";
+import { GetNotesList } from "../App.js";
 
-function EditTodoForm() {
 
+function EditTodoForm({note}) {
+    
+    console.log("dene"+ note.id + " " + note.content);
   
-    const [title_in, setTitle] = React.useState("");
-    const [content_in, setContent] = React.useState("");
+    const [title_in, setTitle] = React.useState(note.title);
+    const [content_in, setContent] = React.useState(note.content);
 
     // handle Submit doesn't work when there is one or more input
     const handleSubmit = e => {
@@ -21,7 +24,6 @@ function EditTodoForm() {
         <input
             type="text"
             className="title_in"
-            placeholder="New Note"
             id="title_in"
             value={title_in}
             onChange={e => setTitle(e.target.value)}
@@ -30,7 +32,6 @@ function EditTodoForm() {
         <textarea 
             name="content_in" 
             id="content_in"
-            placeholder="Enter you note details here..."
             value={content_in}
             rows="15"
             cols="50"
@@ -41,9 +42,17 @@ function EditTodoForm() {
 }
 
 //CURRENTLY ASSIGNING INDEX TO DEFAULT 1 when creating var newNote = new Note(...)
-function EditNotePage() {
-    var note_id = 0
-    console.log("Note ID is now: " + note_id);
+function EditNotePage({noteId}) {
+    var allTodos = GetNotesList();
+    var note ;
+    
+    for(var i = 0 ; i<allTodos.length ;i++){
+        if(allTodos[i].id === noteId){
+            note = allTodos[i];
+        }
+    }
+ 
+
     const where = document.getElementById("root");
     return (
         <div className="app">
@@ -51,17 +60,17 @@ function EditNotePage() {
             <p><i>A companion.  A simple note application</i></p>
             <br/><br/>
             <div className="todo-list">
-            <EditTodoForm/>
+            <EditTodoForm note={note}/>
             </div>
             <br/><br/><br/><br/><br/>
             <div>
             <button onClick={()=> {
                         var title = document.getElementById('title_in').value
                         var content = document.getElementById('content_in').value;
-                        var newNote = new Note(note_id, title, content);
-                        //PushNote(newNote);
+                        note.title = title;
+                        note.content = content;
                         ReactDOM.render(<App/>, where);
-            }}> Done</button>
+            }}> Update</button>
             <button onClick={() => {
                         ReactDOM.render(<App/>, where);
                         }}> Cancel</button>
