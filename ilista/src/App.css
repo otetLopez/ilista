@@ -41,35 +41,66 @@
 
   background-image: url("./assets/bg.jpg");
   padding: 30px;
-  height: 100vh;
+  height: 100%;
 }
 
 h1{
   color: #f0f0f0;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h3{
+  color: beige;
+  text-align:center; 
+  display:table;
+  width:100%;
+}
+
+h4{
+  color: beige;
+  text-align:center; 
+    display:table;
+    width:100%;
+    
+
+}
+
+h5{
+  color: beige;
+  text-align:center; 
+  display:table;
+  width:100%;
 }
 
 p {
   color: #f0f0f0;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .todo-list {
+
   background-color: rgba(1, 90, 169,.2);
   align-items: center;
   border-radius: 4px;
-  padding: 5px;
-  max-width: 400px;
+  padding: 20px;
+  margin-left: 15%;
+  margin-right: 15%;
+
 }
 
 .todo {
-  background: #fff;
+  border-radius: 15px;
+  
+  background: hotpink;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
   padding: 10px 10px;
-  /* font-size: 12px; */
   margin-bottom: 6px;
-  /* border-radius: 3px; */
-  display: flex;
   align-items: center;
-  /* justify-content: space-between; */
+
 }
 
 .title_in {
@@ -80,4 +111,14 @@ p {
 
 .content_in {
   width: 100%;
+}
+
+.deleteButton{
+  
+  background-color:plum;
+  width: 100%;
+  font-style: italic;
+  font-family: serif;
+  color: beige;
+
 }

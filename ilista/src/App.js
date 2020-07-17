@@ -6,7 +6,11 @@ import AddNotePage from './scripts/addNote.js';
 import EditNotePage from './scripts/editNote'
 
 export const INFO_LOG = "INFO_DEBUG: ";
+//gecici
+var newNote = new Note(1, "dd", "fff");
 var notesList = [];
+//gecici
+notesList.push(newNote);
 var nId = 0;
 
 /**
@@ -62,12 +66,11 @@ function DisplayList(props) {
   const content = props.posts.map((post) =>
     <div key={post.id}>
       <div className="todo">
+        <h5>Title</h5>
         <h3 onClick={() => props.editTodo(post.id)}>{post.title}</h3>
-        {post.content}
-  
-        <div>
-          <button onClick={() => props.removeTodo(post.id)}>x</button> 
-        </div>
+        <h5>Details</h5>
+        <h4>{post.content}</h4>
+         <button className="deleteButton" onClick={() => props.removeTodo(post.id)}>Delete Note</button> 
       </div>
     </div>
   );
@@ -117,7 +120,6 @@ function App() {
       <p><i>A companion.  A simple note application</i></p>
       <br/><br/><br/><br/><br/>
       <div className="todo-list">
-        <p>Note list to be displayed here...</p>
         {<DisplayList 
           posts={notesList}
           completeTodo={completeTodo}
