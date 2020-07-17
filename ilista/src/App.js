@@ -28,26 +28,6 @@ export function GetNoteID() {
 }
 
 /**
- * Name: DeleteNote()
- * This function deletes specific note specified by the index.  
- * This is triggered by a delete event from the DisplayList()
- * @param {int} index 
- */
-function DeleteNote(id) {
-  // We will traverse into the main noteList and look for the note id 
-  var isRefreshNeeded = false;
-  for(var i=0; i<notesList.length; i++) {
-    if(notesList[i].id === id) {
-      notesList.splice(i, 1);
-      isRefreshNeeded = true;
-    }
-  }
-  if(isRefreshNeeded === true) {
-    // forceUpdate();
-  }
-}
-
-/**
  * Name: CreateNewNote() 
  * This function routes user to add new note view.  Called when "Add New Note" button is called.
  * The note_index is just incremented when there is a note being pushed
@@ -67,14 +47,16 @@ function CreateNewNote() {
  * @param {*} completeTodo 
  * @param {*} removeTodo 
  */
-function DisplayList(props, removeTodo) {
+function DisplayList(props) {
   const content = props.posts.map((post) =>
     <div key={post.id}>
       <div className="todo">
+   
         <h3>{post.title}</h3>
         {post.content}
+  
         <div>
-          <button onClick={() => DeleteNote(post.id)}>x</button> 
+          <button onClick={() => props.removeTodo(post.id)}>x</button> 
         </div>
       </div>
     </div>
@@ -100,13 +82,13 @@ function App() {
     // setTodos(newTodos);
   };
 
-    // CURRENTLY NOT FUNCTIONING
-  // This is for deleting a note 
-  const removeTodo = index => {
-    // const newTodos = [...todos];
-    // newTodos.splice(index, 1);
-    // setTodos(newTodos);
-    console.log("Removing todo at index " + index); 
+  const removeTodo = id => {
+    for(var i=0; i<notesList.length; i++) {
+      if(notesList[i].id === id) {
+        notesList.splice(i, 1);
+      }
+    }
+    console.log("Removing todo at index " + id); 
   };
 
   // CURRENTLY:
@@ -119,11 +101,11 @@ function App() {
       <br/><br/><br/><br/><br/>
       <div className="todo-list">
         <p>Note list to be displayed here...</p>
-        <DisplayList 
+        {<DisplayList 
           posts={notesList}
           completeTodo={completeTodo}
           removeTodo={removeTodo}
-        />
+        />}
       </div>
       <br/><br/><br/><br/><br/>
       <div>
