@@ -51,8 +51,7 @@ function DisplayList(props) {
   const content = props.posts.map((post) =>
     <div key={post.id}>
       <div className="todo">
-   
-        <h3>{post.title}</h3>
+        <h3 onClick={() => props.editTodo(post.id)}>{post.title}</h3>
         {post.content}
   
         <div>
@@ -95,6 +94,11 @@ function App() {
     console.log("Removing todo at index " + id); 
   };
 
+
+  const editTodo = id => {
+    console.log("edit todo at index " + id); 
+  };
+
   // CURRENTLY:
   // Button "Add New Note" calls CreateNewNote function that renders AddNote.js 
   // Note List cannot be deleted, completed or modified
@@ -109,6 +113,7 @@ function App() {
           posts={notesList}
           completeTodo={completeTodo}
           removeTodo={removeTodo}
+          editTodo={editTodo}
         />}
       </div>
       <br/><br/><br/><br/><br/>
