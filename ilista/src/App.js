@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import "./App.css";
-import "./scripts/note.js";
+import { Note } from "./scripts/note.js";
 import AddNotePage from './scripts/addNote.js';
 
 export const INFO_LOG = "INFO_DEBUG: ";
@@ -73,6 +73,8 @@ function DisplayList(props) {
  * This function is the main app, the default function the application renders.
  */
 function App() {
+  const [notes, setNotes] = useState([
+  ]);
 
   // CURRENTLY NOT FUNCTIONING
   // This is for updating the note status to complete or not
@@ -83,11 +85,13 @@ function App() {
   };
 
   const removeTodo = id => {
+    const newNotes = [...notes];
     for(var i=0; i<notesList.length; i++) {
       if(notesList[i].id === id) {
         notesList.splice(i, 1);
       }
     }
+    setNotes(newNotes);
     console.log("Removing todo at index " + id); 
   };
 
