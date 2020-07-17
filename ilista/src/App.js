@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./App.css";
 import { Note } from "./scripts/note.js";
 import AddNotePage from './scripts/addNote.js';
+import EditNotePage from './scripts/editNote'
 
 export const INFO_LOG = "INFO_DEBUG: ";
 var notesList = [];
@@ -16,6 +17,10 @@ var nId = 0;
 export function PushNote(newNote) {
   notesList.push(newNote);
   nId = nId + 1;
+}
+
+export function GetNotesList(){
+  return notesList;
 }
 
 /**
@@ -37,6 +42,12 @@ function CreateNewNote() {
     const where = document.getElementById("root");
     ReactDOM.render(<AddNotePage/>, where);
 }
+
+const editTodo = id => {
+  console.log("edit todo at index " + id); 
+  const where = document.getElementById("root");
+  ReactDOM.render(<EditNotePage/>, where);
+};
 
 /**
  * Name: DisplayList()
@@ -95,9 +106,7 @@ function App() {
   };
 
 
-  const editTodo = id => {
-    console.log("edit todo at index " + id); 
-  };
+
 
   // CURRENTLY:
   // Button "Add New Note" calls CreateNewNote function that renders AddNote.js 
