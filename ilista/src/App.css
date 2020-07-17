@@ -40,8 +40,11 @@
 .app {
 
   background-image: url("./assets/bg.jpg");
+  background-position: fixed;
+  background-size: cover;
   padding: 30px;
-  height: 100%;
+  height: 100vh;
+  
 }
 
 h1{
@@ -106,19 +109,65 @@ p {
 .title_in {
   width: 100%;
   font-size: large;
+  background-color: hotpink;
+  color: #f0f0f0;
+  text-align: center;
+  
   /* border-radius: 10px; */
 }
 
 .content_in {
   width: 100%;
+  height: 250px;
+  background-color: hotpink;
+  color: #f0f0f0;
+  font-size: 22px;
+  
 }
 
 .deleteButton{
   
-  background-color:plum;
-  width: 100%;
+  background-color:rgb(30, 5, 100);
+  width: 75%;
+  display: block;
+  margin: 0 auto;
   font-style: italic;
   font-family: serif;
   color: beige;
+  border-radius: 10px;
 
+
+}
+
+.smallButtons{
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+
+  font-size: x-large;
+  text-align:center; 
+  display:table;
+  margin: auto;
+  color: azure;
+  background-color: indigo;
+
+  
+}
+
+.add_editbuttons{
+  width: 140px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: x-large;
+  text-align:center; 
+  color: azure;
+  background-color: indigo;
+
+}
+
+.buttonAllign{
+  margin: auto;
+  display: table;
+  align-items: center;
+  
 }

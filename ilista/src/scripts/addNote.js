@@ -28,12 +28,10 @@ function TodoForm() {
         />
         <br/><br/>
         <textarea 
-            name="content_in" 
+            className="content_in" 
             id="content_in"
             placeholder="Enter you note details here..."
             value={content_in}
-            rows="15"
-            cols="50"
             onChange={e => setContent(e.target.value)}
         />
         </form>
@@ -54,15 +52,16 @@ function AddNotePage() {
             <TodoForm/>
             </div>
             <br/><br/><br/><br/><br/>
-            <div>
-            <button onClick={()=> {
+            <div className="buttonAllign">
+            <button className="add_editbuttons" onClick={()=> {
                         var title = document.getElementById('title_in').value
                         var content = document.getElementById('content_in').value;
                         var newNote = new Note(note_id, title, content);
                         PushNote(newNote);
                         ReactDOM.render(<App/>, where);
             }}> Done</button>
-            <button onClick={() => {
+            
+            <button className="add_editbuttons" onClick={() => {
                         ReactDOM.render(<App/>, where);
                         }}> Cancel</button>
             </div>

@@ -6,11 +6,8 @@ import AddNotePage from './scripts/addNote.js';
 import EditNotePage from './scripts/editNote'
 
 export const INFO_LOG = "INFO_DEBUG: ";
-//gecici
-var newNote = new Note(1, "dd", "fff");
+
 var notesList = [];
-//gecici
-notesList.push(newNote);
 var nId = 0;
 
 /**
@@ -127,9 +124,9 @@ function App() {
           editTodo={editTodo}
         />}
       </div>
-      <br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/> <br/><br/>
       <div>
-        <button onClick={CreateNewNote}> Add New Note</button>
+        <button class="smallButtons" onClick={CreateNewNote}>+</button>
       </div>
     </div>
   );
