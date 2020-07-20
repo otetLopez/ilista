@@ -1,0 +1,8 @@
+{
+    "appId": "io.ionic.ilista",
+    "appName": "ilista",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "build",
+    "cordova": {}
+  }
